@@ -3,57 +3,46 @@
 
 
 ###启动顺序
-
-先启动config 模块,再启动registry模块
+	先启动config 模块,再启动registry模块
 
 
 ###config
     端口:7001
 
 ###registry
-
     环境变量:
     CONFIG_SERVICE_URL=http://127.0.0.1:7001
     REGISTRY_SERVICE_URL=http://127.0.0.1:1111/eureka/
-
     地址:http://127.0.0.1:1111
 
 ###gateway
     端口:9000
 
 ###业务模块:module-user,module-order,module-pay
-
     环境变量:
     CONFIG_SERVICE_URL=http://127.0.0.1:7001
     REGISTRY_SERVICE_URL=http://127.0.0.1:1111/eureka/
     TRACEING_SERVICE_URL=http://127.0.0.1:9411/
     REDIS_SERVICE_IP=127.0.0.1
     DB_IP=127.0.0.1:3306
-
     端口:8000,8001,8002
-
     swagger:http://127.0.0.1:8000/user/swagger-ui.html
 
 
 
 ###hystrix turbine:
-
     http://localhost:8100/turbine.stream(ping)
 
 
 ###hystrix dashboard:
-
     http://127.0.0.1:8000/hystrix.stream(ping)
     http://127.0.0.1:8200/hystrix.stream
 
 ###trace
-
     http://127.0.0.1:9411
 
 ###依赖: mysql,redis
-
 mysql:
-
     docker run -d \
         --name=soho_mysql \
         -p 3306:3306 \
@@ -62,7 +51,6 @@ mysql:
 
 
 redis:
-
     docker run -d \
         --name=soho_redis \
         -p 6379:6379 \
@@ -70,7 +58,6 @@ redis:
 
 
 rabbitmq:
-
     docker run -d \
         --hostname my-rabbit \
         --name soho-rabbit \
@@ -79,7 +66,6 @@ rabbitmq:
 
 
  zipkin :
-
     docker run -d \
     -p 9411:9411 \
     openzipkin/zipkin:1.21
