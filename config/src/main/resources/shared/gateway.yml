@@ -1,0 +1,48 @@
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 20000
+
+ribbon:
+  ReadTimeout: 20000
+  ConnectTimeout: 20000
+
+zuul:
+  ignoredServices: '*'
+  host:
+    connect-timeout-millis: 20000
+    socket-timeout-millis: 20000
+
+# routes to serviceId
+  routes:
+    module-user:
+        path: /user/**
+        serviceId: MODULE-USER
+        stripPrefix: false
+        sensitiveHeaders:
+
+    module-order:
+        path: /order/**
+        serviceId: MODULE-ORDER
+        stripPrefix: false
+        sensitiveHeaders:
+
+    module-pay:
+        path: /pay/**
+        serviceId: MODULE-PAY
+        stripPrefix: false
+        sensitiveHeaders:
+
+
+  #  auth-service:
+  #      path: /uaa/**
+  #      url: http://auth-service:5000
+  #      stripPrefix: false
+  #      sensitiveHeaders:
+
+
+server:
+  port: 9000

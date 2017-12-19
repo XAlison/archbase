@@ -1,0 +1,38 @@
+logging:
+  level:
+    org.springframework.security: INFO
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
+        strategy: SEMAPHORE
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: ${REGISTRY_SERVICE_URL}
+
+security:
+  oauth2:
+    resource:
+      user-info-uri: http://auth-service:5000/uaa/users/current
+
+spring:
+  rabbitmq:
+    host: rabbitmq
+  zipkin:
+    base-url: ${TRACEING_SERVICE_URL}
+  sleuth:
+    sampler:
+      percentage: 1
+  redis:
+    database: 1
+    host : ${REDIS_SERVICE_IP}
+    pool:
+      max-active: 20
