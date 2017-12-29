@@ -8,6 +8,7 @@ import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.cloud.sleuth.sampler.AlwaysSampler;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
@@ -28,6 +29,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableRedisHttpSession
 @EnableHystrix
 @EnableSwagger2
+@EnableResourceServer
 public class UserApplication {
 
     public static void main(String[] args) {

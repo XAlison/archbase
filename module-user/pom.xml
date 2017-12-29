@@ -75,6 +75,16 @@
       <artifactId>spring-cloud-starter-hystrix</artifactId>
     </dependency>
 
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-security</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-oauth2</artifactId>
+    </dependency>
+
     <!-- spring boot devtools 依赖包. -->
     <dependency>
       <groupId>org.springframework.boot</groupId>

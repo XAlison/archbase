@@ -1,6 +1,6 @@
 logging:
   level:
-    org.springframework.security: INFO
+    org.springframework.security: debug
 
 hystrix:
   command:
@@ -9,7 +9,6 @@ hystrix:
         isolation:
           thread:
             timeoutInMilliseconds: 10000
-        strategy: SEMAPHORE
 
 eureka:
   instance:
@@ -21,7 +20,7 @@ eureka:
 security:
   oauth2:
     resource:
-      user-info-uri: http://auth-service:5000/uaa/users/current
+      user-info-uri: http://localhost:5000/uaa/user
 
 spring:
   rabbitmq:
