@@ -1,13 +1,13 @@
 package org.soho.auth.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import javax.sql.DataSource;
@@ -24,7 +24,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        super.configure(http);
+        //super.configure(http);
+        http.authorizeRequests().anyRequest().authenticated()
+                .and()
+                .csrf().disable();
     }
 
     @Override
@@ -48,9 +51,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
         // authorization_code 时用户去哪认证
-        auth.jdbcAuthentication().dataSource(dataSource);
+        //auth.jdbcAuthentication().dataSource(dataSource);
 
         // authorization_code 时用户去哪认证,自定议认证
-        //auth.userDetailsService(userDetailsService);
+        auth.userDetailsService(userDetailsService);
+    }
+
+
+    @Override
+    @Bean
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
     }
 }

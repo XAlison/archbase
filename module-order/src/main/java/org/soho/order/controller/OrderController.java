@@ -10,7 +10,6 @@ import org.soho.order.domain.ExOrder;
 import org.soho.order.service.ExOrderService;
 import org.soho.order.vo.OrderVo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -39,48 +39,19 @@ public class OrderController {
     @Autowired
     private PayClient payclinet;
 
-    /**
-     * 根据ID查询数据
-     * @param id
-     * @return
-     */
-    @RequestMapping(value = "/order/{id}", method = RequestMethod.GET)
-    @ApiOperation(value = "查询订单")
-    public OrderVo getOrder(@PathVariable String id) {
-        logger.info("查询订单............");
-        OrderVo vo = exOrderService.getExOrderById(id);
-        return vo;
-    }
-
-    /**
-     * 新增付款
-     * @param vo
-     * @return
-     */
-    @RequestMapping(value = "/order", method = RequestMethod.POST)
-    @ApiOperation(value = "新增订单")
-    public OrderVo postOrder(@RequestBody OrderVo vo) {
-        logger.info("新增订单............");
-        exOrderService.insertExPay(vo);
-        return vo;
-    }
-
-
-    /**
-     * 修改付款
-     * @param vo
-     * @return
-     */
-    @RequestMapping(value = "/order", method = RequestMethod.PUT)
-    @ApiOperation(value = "修改订单")
-    public OrderVo putOrder(@RequestBody OrderVo vo) {
-        logger.info("修改订单............");
-        exOrderService.updateExPay(vo);
-        return vo;
-    }
-
     @Autowired
     RestTemplate restTemplate;
+
+
+    @RequestMapping("/hello")
+    public String home(Principal principal) {
+        return "SUCCESS，授权成功拿到资源啦.当前用户：" + principal.getName();
+    }
+
+    @RequestMapping("/hello2")
+    public String home2() {
+        return "Hello World";
+    }
 
     @RequestMapping(value = "/purchase", method = RequestMethod.GET)
     @ApiOperation(value = "用户购买订单")

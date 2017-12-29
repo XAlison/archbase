@@ -7,13 +7,11 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.stereotype.Component;
 
 import java.util.Collections;
 
 /**
  */
-@Component
 public class SsoAuthProvider implements AuthenticationProvider {
     private static final Logger log = LoggerFactory.getLogger(SsoAuthProvider.class);
 

@@ -20,7 +20,7 @@ import org.springframework.security.oauth2.provider.token.ResourceServerTokenSer
  * Created by zhuozl on 17-12-28.
  */
 
-@Configuration
+
 public class ResourceServerConfigurer extends ResourceServerConfigurerAdapter {
 
     @Autowired
@@ -33,7 +33,6 @@ public class ResourceServerConfigurer extends ResourceServerConfigurerAdapter {
         //.antMatchers(HttpMethod.POST, "/foo").hasAuthority("FOO_WRITE");
         //you can implement it like this, but I show method invocation security on write
     }
-
 
     @Bean
     @ConfigurationProperties(prefix = "security.oauth2.client")
@@ -50,6 +49,7 @@ public class ResourceServerConfigurer extends ResourceServerConfigurerAdapter {
     public OAuth2RestTemplate clientCredentialsRestTemplate() {
         return new OAuth2RestTemplate(clientCredentialsResourceDetails());
     }
+
 
     @Bean
     public ResourceServerTokenServices tokenServices() {

@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    password: root
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://${DB_IP}/soho
+    username: root
+server:
+  context-path: /order
+  port: 8001
+ribbon:
+  eureka:
+    enabled: true
+
+security:
+  oauth2:
+    client:
+      clientId: order-service
+      clientSecret: "1"
+      accessTokenUri: http://127.0.0.1:5000/uaa/oauth/token
+      grant-type: client_credentials
+      scope: server
+    resource:
+      user-info-uri: http://127.0.0.1:5000/uaa/user
