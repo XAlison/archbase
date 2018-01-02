@@ -19,8 +19,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
         User user = new User();
         user.setId(1L);
-        user.setUsername("123");
-        user.setPassword("456");
+        user.setUsername("user-service");
+        user.setPassword("user-service");
         return new UserDetails() {
             @Override
             public Collection<? extends GrantedAuthority> getAuthorities() {

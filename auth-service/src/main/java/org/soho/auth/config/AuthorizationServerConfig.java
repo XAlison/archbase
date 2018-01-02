@@ -35,23 +35,23 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
 
-        // TODO persist clients details
+        System.out.println("XXXXXXXXXXXXXx");
         clients.inMemory()
                 .withClient("browser")
                 .authorizedGrantTypes("refresh_token", "password")
                 .scopes("ui")
                 .and()
-                .withClient("account-service")
+                .withClient("user-service")
                 .secret("1")
                 .authorizedGrantTypes("client_credentials", "refresh_token")
                 .scopes("server")
                 .and()
-                .withClient("statistics-service")
+                .withClient("order-service")
                 .secret("1")
                 .authorizedGrantTypes("client_credentials", "refresh_token")
                 .scopes("server")
                 .and()
-                .withClient("notification-service")
+                .withClient("pay-service")
                 .secret("1")
                 .authorizedGrantTypes("client_credentials", "refresh_token")
                 .scopes("server");

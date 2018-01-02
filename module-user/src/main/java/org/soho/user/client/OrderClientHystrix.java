@@ -11,6 +11,25 @@ import org.springframework.web.bind.annotation.RequestParam;
 /**
  * Created by zhuozl on 17-3-8.
  */
+
+/*
+
+@Component
+public class OrderClientHystrix implements FallbackFactory<OrderClient> {
+    @Override
+    public HystrixClient create(Throwable cause) {
+        return new HystrixClientWithFallBackFactory() {
+            @Override
+            public Hello iFailSometimes() {
+                return new Hello("fallback; reason was: " + cause.getMessage());
+            }
+        };
+    }
+}
+
+*/
+
+
 @Component
 public class OrderClientHystrix implements OrderClient {
     private final static Logger logger = LoggerFactory.getLogger(OrderClientHystrix.class);

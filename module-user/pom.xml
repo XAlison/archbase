@@ -58,7 +58,7 @@
       <artifactId>spring-cloud-starter-eureka</artifactId>
     </dependency>
 
-
+    <!-- Java HTTP 客户端开发的工具的模块 -->
     <dependency>
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-starter-feign</artifactId>
@@ -70,20 +70,36 @@
       <artifactId>hystrix-metrics-event-stream</artifactId>
     </dependency>
 
+    <!-- Hystrix 模块 -->
     <dependency>
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-starter-hystrix</artifactId>
     </dependency>
 
-    <dependency>
+  <!--  <dependency>
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-starter-security</artifactId>
     </dependency>
+    <dependency>
+      <groupId>org.springframework.security.oauth</groupId>
+      <artifactId>spring-security-oauth2</artifactId>
+    </dependency>-->
+
 
     <dependency>
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-starter-oauth2</artifactId>
     </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-security</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.security.oauth</groupId>
+      <artifactId>spring-security-oauth2</artifactId>
+    </dependency>
+
+
 
     <!-- spring boot devtools 依赖包. -->
     <dependency>
@@ -91,6 +107,11 @@
       <artifactId>spring-boot-devtools</artifactId>
       <optional>true</optional>
       <scope>true</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.sun.jersey</groupId>
+      <artifactId>jersey-server</artifactId>
+      <version>RELEASE</version>
     </dependency>
 
   </dependencies>
